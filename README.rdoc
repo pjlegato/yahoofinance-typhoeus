@@ -3,6 +3,45 @@
 Yahoo! Finance in Ruby. Downloads historic data with the Typhoeus library.
 This project is not endorsed by or connected with Yahoo! in any way.
 
+Copyright (C) 2010 Paul Legato. All rights reserved.
+Licensed under the BSD-new license: See LICENSE for details.
+
+== Usage
+
+YahooFinance-Typhoeus is designed to be both highly efficient and easy to use.
+
+=== Parallel queries (efficient)
+
+When you instantiate a new YahooFinance object, you can tell it how
+many parallel HTTP requests to make at once. The default is 20. This
+seems low, but it's designed to keep you out of trouble by avoiding
+DoSing Yahoo's servers. You change it at your own risk!
+
+ require 'rubygems'
+ require 'yahoofinance-typhoeus'
+
+ yf = YahooFinance.new # or YahooFinance.new(max_number_of_concurrent_connections)
+
+ yf.add_query("AAPL", "2008-12-01", "2008-12-15") {|response| puts response}
+ yf.add_query("IBM", "2008-10-15", "2008-10-30") {|response| puts response}
+
+ yf.run
+
+That's all there is to it.
+
+
+=== Quick, one-off query (inefficient)
+
+ require 'rubygems'
+ require 'yahoofinance-typhoeus'
+
+ YahooFinance.quick_query("AAPL", "2009-01-01", "2009-02-01")
+
+Note that as quick_query is intended for one-off requests, it does NOT
+take advantage of libcurl/typhoeus' concurrent HTTP connections
+features.
+
+
 == Note on Patches/Pull Requests
 
 * Fork the project.
@@ -13,6 +52,3 @@ This project is not endorsed by or connected with Yahoo! in any way.
   (if you want to have your own version, that is fine but bump version in a commit by itself I can ignore when I pull)
 * Send me a pull request. Bonus points for topic branches.
 
-== Copyright
-
-Copyright (c) 2010 Paul Legato. See LICENSE for details.

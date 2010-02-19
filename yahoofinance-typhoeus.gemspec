@@ -25,7 +25,8 @@ Gem::Specification.new do |s|
      "VERSION",
      "lib/yahoofinance-typhoeus.rb",
      "test/helper.rb",
-     "test/test_yahoofinance-typhoeus.rb"
+     "test/test_yahoofinance-typhoeus.rb",
+     "yahoofinance-typhoeus.gemspec"
   ]
   s.homepage = %q{http://github.com/pjlegato/yahoofinance-typhoeus}
   s.rdoc_options = ["--charset=UTF-8"]
