@@ -5,12 +5,13 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "yahoofinance-typhoeus"
-    gem.summary = %Q{TODO: one-line summary of your gem}
-    gem.description = %Q{TODO: longer description of your gem}
+    gem.summary = %Q{Yahoo! Finance historic quotes from Ruby.}
+    gem.description = %Q{Provides high-performance access to historic stock data from Yahoo! Finance}
     gem.email = "pjlegato@gmail.com"
     gem.homepage = "http://github.com/pjlegato/yahoofinance-typhoeus"
     gem.authors = ["Paul Legato"]
     gem.add_development_dependency "minitest", ">= 0"
+    gem.add_dependency "typhoeus", ">= 0"
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
   Jeweler::GemcutterTasks.new
